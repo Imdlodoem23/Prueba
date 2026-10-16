@@ -5,14 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bebidas · Carta</title>
   <meta name="description" content="Carta de bebidas: cafés, tés, jugos, smoothies y cócteles sin alcohol." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🥤%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="brand">🥤 <span>Bebidas</span></div>
-    <button class="cart-btn" id="cart-btn" aria-label="Ver pedido">
-      Pedido <span class="badge" id="cart-count">0</span>
-    </button>
+    <div class="header-actions">
+      <button class="theme-btn" id="theme-btn" type="button" aria-label="Cambiar tema">🌙</button>
+      <button class="cart-btn" id="cart-btn" aria-label="Ver pedido">
+        Pedido <span class="badge" id="cart-count">0</span>
+      </button>
+    </div>
   </header>
 
   <section class="hero">
@@ -23,6 +27,19 @@
 
   <nav class="filters" id="filters" aria-label="Categorías"></nav>
 
+  <div class="toolbar">
+    <span id="result-count"></span>
+    <label>
+      Ordenar
+      <select id="sort">
+        <option value="relevancia">Relevancia</option>
+        <option value="precio-asc">Precio: menor a mayor</option>
+        <option value="precio-desc">Precio: mayor a menor</option>
+        <option value="nombre">Nombre A–Z</option>
+      </select>
+    </label>
+  </div>
+
   <main class="menu" id="menu" aria-live="polite"></main>
 
   <aside class="cart" id="cart" hidden aria-label="Pedido">
@@ -32,8 +49,11 @@
     </div>
     <ul id="cart-items"></ul>
     <p class="cart-total">Total: <strong id="cart-total">$0</strong></p>
-    <button class="primary" id="clear-cart">Vaciar pedido</button>
+    <button class="primary" id="confirm-order" type="button">Confirmar pedido</button>
+    <button class="secondary" id="clear-cart" type="button">Vaciar pedido</button>
   </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <footer class="site-footer">© <span id="year"></span> Bebidas · Precios en pesos</footer>
 
