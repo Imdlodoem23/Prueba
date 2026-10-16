@@ -257,3 +257,87 @@ button, input { font: inherit; }
 @media (max-width: 480px) {
   .menu { grid-template-columns: 1fr; }
 }
+
+/* ---------- Animaciones ---------- */
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes slide-down {
+  from { transform: translateY(-100%); }
+  to { transform: none; }
+}
+
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes bump {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.35); }
+  100% { transform: scale(1); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0) scale(1); }
+  25% { transform: rotate(-8deg) scale(1.08); }
+  75% { transform: rotate(8deg) scale(1.08); }
+}
+
+.site-header { animation: slide-down 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+.hero > * { animation: rise 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.hero > h1 { animation-delay: 0.05s; }
+.hero > p { animation-delay: 0.15s; }
+.hero > #search { animation-delay: 0.25s; }
+
+.filters { animation: fade-in 0.6s 0.3s both; }
+
+.chip {
+  transition: transform 0.15s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.chip:hover { transform: translateY(-2px); }
+.chip:active { transform: scale(0.95); }
+
+.drink {
+  animation: rise 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(var(--i, 0) * 60ms);
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
+}
+.drink:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(42, 29, 23, 0.14);
+}
+.drink:hover .emoji { animation: wiggle 0.6s ease; }
+
+.add-btn {
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.add-btn:hover { filter: brightness(1.08); }
+.add-btn:active { transform: scale(0.9); }
+
+.badge.bump { animation: bump 0.35s ease; }
+
+.cart:not([hidden]) { animation: pop-in 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+#cart-items li { animation: fade-in 0.25s ease both; }
+
+.cart-btn, .primary, #clear-cart, .qty button {
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.cart-btn:hover, .primary:hover { filter: brightness(1.06); }
+.cart-btn:active, .primary:active, .qty button:active { transform: scale(0.94); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

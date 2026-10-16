@@ -59,9 +59,10 @@ function renderMenu() {
     menu.innerHTML = '<p class="empty">No encontramos bebidas con esa búsqueda.</p>';
     return;
   }
-  for (const d of list) {
+  for (const [i, d] of list.entries()) {
     const card = document.createElement("article");
     card.className = "drink";
+    card.style.setProperty("--i", i);
     card.innerHTML = `
       <div class="emoji" aria-hidden="true">${d.emoji}</div>
       <h3></h3>
@@ -81,6 +82,14 @@ function addToCart(id) {
   state.cart[id] = (state.cart[id] || 0) + 1;
   saveCart();
   renderCart();
+  bumpBadge();
+}
+
+function bumpBadge() {
+  const badge = $("#cart-count");
+  badge.classList.remove("bump");
+  void badge.offsetWidth; // reinicia la animación
+  badge.classList.add("bump");
 }
 
 function changeQty(id, delta) {
