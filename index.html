@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bebidas · Carta</title>
+  <meta name="description" content="Carta de bebidas: cafés, tés, jugos, smoothies y cócteles sin alcohol." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">🥤 <span>Bebidas</span></div>
+    <button class="cart-btn" id="cart-btn" aria-label="Ver pedido">
+      Pedido <span class="badge" id="cart-count">0</span>
+    </button>
+  </header>
+
+  <section class="hero">
+    <h1>Elige tu bebida</h1>
+    <p>Frías, calientes y para compartir. Arma tu pedido y listo.</p>
+    <input type="search" id="search" placeholder="Buscar bebida…" aria-label="Buscar bebida" />
+  </section>
+
+  <nav class="filters" id="filters" aria-label="Categorías"></nav>
+
+  <main class="menu" id="menu" aria-live="polite"></main>
+
+  <aside class="cart" id="cart" hidden aria-label="Pedido">
+    <div class="cart-head">
+      <h2>Tu pedido</h2>
+      <button id="cart-close" aria-label="Cerrar">✕</button>
+    </div>
+    <ul id="cart-items"></ul>
+    <p class="cart-total">Total: <strong id="cart-total">$0</strong></p>
+    <button class="primary" id="clear-cart">Vaciar pedido</button>
+  </aside>
+
+  <footer class="site-footer">© <span id="year"></span> Bebidas · Precios en pesos</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
